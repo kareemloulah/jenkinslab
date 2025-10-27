@@ -15,7 +15,7 @@ pipeline {
         }
         stage('deploy') {
             steps {
-                sh "docker run nodeapp:${env.BUILD_NUMBER} -p 3000:3000 <eof>"
+                sh "docker run -p 3000:3000 nodeapp:${env.BUILD_NUMBER}"
             }
         }
     }
