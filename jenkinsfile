@@ -17,7 +17,7 @@ pipeline {
         stage('deploy') {
             steps {
                 script {
-                    appimage.run("-d")
+                    appimage.run("-p 3000:3000")
                 }
             }
         }
