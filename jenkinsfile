@@ -9,7 +9,7 @@ pipeline {
         stage('build') {
             steps {
                 script {
-                    def appimage = docker.build "loulah/nodeapp:${env.BUILD_NUMBER}"
+                    docker.build "loulah/nodeapp:${env.BUILD_NUMBER}"
                     
                 }
             }
@@ -17,7 +17,7 @@ pipeline {
         stage('deploy') {
             steps {
                 script {
-                    appimage.run("-p 3000:3000")
+                    docker.image("loulah/nodeapp:${env.BUILD_NUMBER}").run("-d")
                 }
             }
         }
