@@ -15,9 +15,10 @@ pipeline {
         }
         stage('deploy') {
             steps {
-                script {
-                    appimage.run("-p 3000:3000")
-                }
+                sh "docker run nodeapp:${env.BUILD_NUMBER} -p 3000:3000"
+                
+
+
             }
         }
     }
