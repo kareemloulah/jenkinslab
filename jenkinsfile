@@ -8,8 +8,10 @@ pipeline {
         }
         stage('build') {
             steps {
-                script {
+                dir(jenkinsTask) {
+                    script {
                     def appimage = docker.build "loulah/nodeapp:${env.BUILD_NUMBER}"
+                    }
                 }
             }
         }
