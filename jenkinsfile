@@ -9,7 +9,7 @@ pipeline {
         stage('build') {
             steps {
                 script {
-                    appimage = docker.build("nodeapp:${env.BUILD_NUMBER}")
+                    def appimage = docker.build("nodeapp:${env.BUILD_NUMBER}")
                 }
             }
         }
