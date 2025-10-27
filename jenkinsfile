@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('getcode') {
             steps {
-                checkout scm
+                git branch: 'main', url: 'https://github.com/kareemloulah/jenkinslab.git'
             }
         }
         stage('build') {
