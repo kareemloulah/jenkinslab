@@ -17,7 +17,7 @@ pipeline {
         stage('deploy') {
             steps {
                 script {
-                    docker.image("loulah/nodeapp:${env.BUILD_NUMBER}").run("-d")
+                    appimage.run("-d")
                 }
             }
         }
