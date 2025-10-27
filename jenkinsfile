@@ -16,7 +16,7 @@ pipeline {
         stage('deploy') {
             steps {
                 script {
-                    docker.run("nodeapp:${env.BUILD_NUMBER}")
+                    docker.image.withrun("nodeapp:${env.BUILD_NUMBER}")
                 }
             }
         }
