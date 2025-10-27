@@ -8,17 +8,16 @@ pipeline {
         }
         stage('build') {
             steps {
-                dir(jenkinsTask) {
-                    script {
+                script {
                     def appimage = docker.build "loulah/nodeapp:${env.BUILD_NUMBER}"
-                    }
+                    
                 }
             }
         }
         stage('deploy') {
             steps {
                 script {
-                    appimage.run()
+                    appimage.run("-p 3000:3000 -d")
                 }
             }
         }
