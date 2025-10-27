@@ -1,0 +1,24 @@
+pipeline {
+    agent any
+    stages {
+        stage('getcode') {
+            steps {
+                checkout scm
+            }
+        }
+        stage('build') {
+            steps {
+                script {
+                    appimage = docker.build("nodeapp:${env.BUILD_NUMBER}")
+                }
+            }
+        }
+        stage('deploy') {
+            steps {
+                script {
+                    app.run('-p 3000:3000')
+                }
+            }
+        }
+    }
+}
